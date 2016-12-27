@@ -24,6 +24,8 @@ import com.psaravan.filebrowserview.lib.Interfaces.NavigationInterface;
 import com.psaravan.filebrowserview.lib.View.FileBrowserView;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Example implementation for a List representation of the view.
@@ -48,6 +50,8 @@ public class ListActivity extends Activity {
         mFileBrowserView = (FileBrowserView) findViewById(R.id.fileBrowserView);
 
         //Customize the view.
+        ArrayList<String> filter = new ArrayList<String>();
+        filter.add("mp4");
         mFileBrowserView.setFileBrowserLayoutType(FileBrowserView.FILE_BROWSER_LIST_LAYOUT) //Set the type of view to use.
                         .setDefaultDirectory(new File("/")) //Set the default directory to show.
                         .setShowHiddenFiles(true) //Set whether or not you want to show hidden files.
@@ -55,6 +59,7 @@ public class ListActivity extends Activity {
                         .showOverflowMenus(true) //Shows the overflow menus for each item in the list.
                         .showItemIcons(true) //Shows the icons next to each item name in the list.
                         .setNavigationInterface(navInterface) //Sets the nav interface instance for this view.
+                        .excludeFileTypes(filter, false)
                         .init(); //Loads the view. You MUST call this method, or the view will not be displayed.
 
     }

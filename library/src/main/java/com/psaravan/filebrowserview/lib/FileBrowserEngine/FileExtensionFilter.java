@@ -34,7 +34,12 @@ public class FileExtensionFilter {
                                                "Exception thrown for the following extension: " +
                                                 extension);
 
-        return getFilterMap().put(extension, false);
+        Boolean res = getFilterMap().put(extension, false);
+        if (res != null) {
+            return res;
+        } else {
+            return false;
+        }
     }
 
     /**
